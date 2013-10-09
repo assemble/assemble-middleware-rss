@@ -1,0 +1,56 @@
+{
+  "name": "assemble-plugin-rss",
+  "description": "RSS generator plugin for Assemble, the static site generator for Yeoman, Grunt.js and Node.js.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/assemble/assemble-plugin-rss",
+  "author": {
+    "name": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/assemble/assemble-plugin-rss.git"
+  },
+  "bugs": {
+    "url": "https://github.com/assemble/assemble-plugin-rss/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/assemble/assemble-plugin-rss/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "./rss.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "frep": "~0.1.2",
+    "moment": "~2.2.1",
+    "js-prettify": "~1.4.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "assemble": "~0.4.12",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-readme": "~0.1.7",
+    "permalinks": "~0.1.6"
+  },
+  "peerDependencies": {
+    "assemble": "~0.4.12"
+  },
+  "keywords": [
+    "blog",
+    "moment",
+    "moment.js",
+    "parse url",
+    "RSS",
+    "post",
+    "pretty links",
+    "slug",
+    "uri",
+    "url",
+    "yaml front matter"
+  ]
+}
