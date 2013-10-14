@@ -139,7 +139,6 @@ module.exports = function(config, callback) {
       // dest path defined for the page, unless a custom path is defined.
       var dest = path.join(path.dirname(file.dest), feed.dest || 'feed.xml');
 
-      console.log(feed);
 
       // Write the feed
       grunt.file.write(dest, xml);

@@ -1,23 +1,23 @@
 {
-  "name": "assemble-plugin-rss",
+  "name": "assemble-rss",
   "description": "RSS generator plugin for Assemble, the static site generator for Yeoman, Grunt.js and Node.js.",
   "version": "0.1.0",
-  "homepage": "https://github.com/assemble/assemble-plugin-rss",
+  "homepage": "https://github.com/assemble/assemble-rss",
   "author": {
     "name": "Jon Schlinkert",
     "url": "https://github.com/jonschlinkert"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/assemble/assemble-plugin-rss.git"
+    "url": "https://github.com/assemble/assemble-rss.git"
   },
   "bugs": {
-    "url": "https://github.com/assemble/assemble-plugin-rss/issues"
+    "url": "https://github.com/assemble/assemble-rss/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/assemble/assemble-plugin-rss/blob/master/LICENSE-MIT"
+      "url": "https://github.com/assemble/assemble-rss/blob/master/LICENSE-MIT"
     }
   ],
   "main": "./rss.js",
