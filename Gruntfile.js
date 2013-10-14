@@ -38,7 +38,7 @@ module.exports = function(grunt) {
       options: {
         plugins: ['./rss.js', 'permalinks'],
         assets: 'test/actual/assets',
-        layout: 'test/fixtures/default.hbs'
+        layout: 'test/fixtures/default.hbs',
       },
       // Feeds should not be generated
       no_opts: {
@@ -65,7 +65,7 @@ module.exports = function(grunt) {
           },
         },
         files: [
-          {expand: true, flatten: true, cwd: 'test/fixtures/pages', src: ['**/*.hbs'], dest: 'test/actual/multiple_plugins', ext: '.html'}
+          {expand: true, cwd: 'test/fixtures/pages', src: ['**/*.hbs'], dest: 'test/actual/multiple_plugins', ext: '.html'}
         ]
       },     
       feeds: {
@@ -84,7 +84,7 @@ module.exports = function(grunt) {
           },
         },
         files: [
-          {expand: true, flatten: true, cwd: 'test/fixtures/pages/feeds', src: ['*.hbs'], dest: 'test/actual/pages/feeds', ext: '.html'}
+          {expand: true, cwd: 'test/fixtures/pages/feeds', src: ['*.hbs'], dest: 'test/actual/pages/feeds', ext: '.html'}
         ]
       }
     },
