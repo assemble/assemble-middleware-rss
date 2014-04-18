@@ -7,13 +7,13 @@
  */
 
 // Node.js
-var path  = require('path');
-var url   = require('url');
+var path = require('path'),
+    url = require('url');
 
 // node_modules
-var chalk  = require('chalk');
-var moment = require('moment');
-var RSS    = require('rss');
+var chalk = require('chalk'),
+    moment = require('moment'),
+    RSS = require('rss');
 
 
 /**
@@ -25,18 +25,16 @@ module.exports = function(config, callback) {
 
   'use strict';
 
-  var options = config.context;
-  var grunt   = config.grunt;
+  var options = config.context,
+      grunt = config.grunt,
+      pkg = grunt.file.readJSON(path.join(process.cwd(), 'package.json')),
+      feed = options.feed || {};
   
-  var pkg     = grunt.file.readJSON(path.join(process.cwd(), 'package.json'));
+  var pages = options.pages,
+      page = options.page;
   
-  var feed    = options.feed || {};
-  var pages   = options.pages;
-  var page    = options.page;
-  
-  var async   = grunt.util.async;
-  var _       = grunt.util._;
-
+  var async = grunt.util.async,
+      _ = grunt.util._;
 
   var Utils = require('./lib/utils');
 
