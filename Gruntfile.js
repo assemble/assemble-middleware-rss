@@ -2,7 +2,7 @@
  * Assemble Plugin: Permalinks
  * https://github.com/assemble/permalinks
  *
- * Copyright (c) 2013 Jon Schlinkert, contributors
+ * Copyright (c) 2014 Jon Schlinkert, contributors
  * Licensed under the MIT license.
  */
 
@@ -11,8 +11,7 @@
 module.exports = function(grunt) {
 
   var _ = grunt.util._;
-
-  // Project configuration.
+  
   grunt.initConfig({
 
     pkg: grunt.file.readJSON('package.json'),
@@ -31,62 +30,87 @@ module.exports = function(grunt) {
         eqnull: true,
         node: true
       },
-      all: ['Gruntfile.js', 'tasks/*.js', '<%= nodeunit.tests %>']
+      all: ['Gruntfile.js','tasks/*.js','<%= nodeunit.tests %>']
     },
 
     assemble: {
       options: {
-        plugins: ['./rss.js', 'permalinks'],
-        assets: 'test/actual/assets',
-        layout: 'test/fixtures/default.hbs',
+        plugins: ['./rss.js','assemble-contrib-permalinks'],
+        assets: 'test/assets',
+        layout: 'test/fixtures/layouts/default.hbs'
       },
-      // Feeds should not be generated
+      
+      /* assemble:no_opts
+       * Feed(s) should not be generated and an error should occur.
+       */
       no_opts: {
         options: {
-          feed: {}
+          feed: {
+            
+          }
         },
-        files: [
-          {expand: true, cwd: 'test/fixtures/pages', src: ['**/*.hbs'], dest: 'test/actual/no_opts', ext: '.html'}
-        ]
+        files: [{
+          expand: true, 
+          cwd: 'test/fixtures/pages', 
+          src: ['**/*.hbs'], 
+          dest: 'test/actual/no_opts'
+        }]
       },
-      // Test multiple plugins together
+      
+      /* assemble:multiple_plugins
+       * Test multiple plugins together.
+       */
       multiple_plugins: {
         options: {
           flatten: true,
-          permalinks: {preset: 'pretty'},
-          // Test RSS config using all custom options
+          permalinks: { 
+            preset: 'pretty' 
+          },
           feed: {
             logging: true,
             format: true,
             author: 'Jon Schlinkert',
             dest: 'rss.xml',
             siteurl: 'http:/assemble.io',
-            items: {}
+            items: {
+            
+            }
           },
         },
-        files: [
-          {expand: true, cwd: 'test/fixtures/pages', src: ['**/*.hbs'], dest: 'test/actual/multiple_plugins', ext: '.html'}
-        ]
-      },     
+        files: [{
+          expand: true, 
+          cwd: 'test/fixtures/pages', 
+          src: ['**/*.hbs'], 
+          dest: 'test/actual/multiple_plugins'
+        }]
+      }, 
+      
+      /* assemble:feeds
+       * Test feed config using all custom options.
+       */ 
       feeds: {
         options: {
           flatten: true,
-          permalinks: {preset: 'pretty'},
-
-          // Test RSS config using all custom options
+          permalinks: {
+            preset: 'pretty'
+          },
           feed: {
             logging: true,
-            format: true,
+            format: false,
             author: 'Jon Schlinkert',
             dest: 'rss.xml',
             siteurl: 'http:/assemble.io',
             items: {}
           },
         },
-        files: [
-          {expand: true, cwd: 'test/fixtures/pages/feeds', src: ['*.hbs'], dest: 'test/actual/pages/feeds', ext: '.html'}
-        ]
+        files: [{
+          expand: true, 
+          cwd: 'test/fixtures/pages/feeds', 
+          src: ['*.hbs'], 
+          dest: 'test/actual/pages/feeds'
+        }]
       }
+      
     },
 
     // Before generating new files, remove any files from previous build.
@@ -98,6 +122,7 @@ module.exports = function(grunt) {
     nodeunit: {
       tests: ['test/*_test.js'],
     }
+    
   });
 
   // These plugins provide necessary tasks.
