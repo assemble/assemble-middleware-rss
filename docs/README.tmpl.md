@@ -17,12 +17,15 @@ We welcome all kinds of contributions! The most basic way to show your support i
 ## RSS Specifications
 {%= _.doc("rss.md") %}
 
-## Author
+## Authors
 
 **Jon Schlinkert**
-
 + [github.com/jonschlinkert](https://github.com/jonschlinkert)
 + [twitter.com/jonschlinkert](http://twitter.com/jonschlinkert)
+
+**Patrick Burtchaell**
++ [github.com/pburtchaell](http://github.com/pburtchaell)
++ [twitter.com/pburtchaell](http://twitter.com/pburtchaell)
 
 ## License
 {%= copyright %}
@@ -30,9 +33,5 @@ We welcome all kinds of contributions! The most basic way to show your support i
 
 ***
 
-_This file was generated on {%= grunt.template.date("fullDate") %}._
-
-
 [grunt]: http://gruntjs.com/
 [Getting Started]: https://github.com/gruntjs/grunt/blob/devel/docs/getting_started.md
-[package.json]: https://npmjs.org/doc/json.html
