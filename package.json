@@ -35,7 +35,8 @@
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-readme": "~0.1.7",
-    "js-prettify": "~1.4.0"
+    "js-prettify": "~1.4.0",
+    "grunt-verb": "~0.2.1"
   },
   "peerDependencies": {
     "assemble": "~0.4.12"
