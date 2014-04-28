@@ -1,15 +1,15 @@
-# assemble-rss [![NPM version](https://badge.fury.io/js/assemble-rss.png)](http://badge.fury.io/js/assemble-rss) 
+# assemble-contrib-rss [![NPM version](https://badge.fury.io/js/assemble-contrib-rss.png)](http://badge.fury.io/js/assemble-contrib-rss)  [![Build Status](https://travis-ci.org/assemble/assemble-contrib-rss.png)](https://travis-ci.org/assemble/assemble-contrib-rss)
 
 > RSS generator plugin for Assemble, the static site generator for Yeoman, Grunt.js and Node.js.
 
 ## Contributing
-We welcome all kinds of contributions! The most basic way to show your support is to star the project, and if you'd like to get involed please see the [Contributing to assemble-rss](https://github.com/assemble/assemble-rss/blob/master/CONTRIBUTING.md) guide for information on contributing to this project.
+We welcome all kinds of contributions! The most basic way to show your support is to star the project, and if you'd like to get involed please see the [Contributing to assemble-contrib-rss](https://github.com/assemble/assemble-contrib-rss/blob/master/CONTRIBUTING.md) guide for information on contributing to this project.
 
 ## Quickstart
 From the same directory as your project's [Gruntfile][Getting Started] and [package.json][], install this plugin with the following command:
 
 ```bash
-npm install assemble-rss --save-dev
+npm install assemble-contrib-rss --save-dev
 ```
 
 Once that's done, just add `assemble-rss`, the name of this module, to the `plugins` option in the Assemble task:
@@ -35,7 +35,6 @@ module.exports = function(grunt) {
 ```
 
 If everything was installed and configured correctly, the plugin should be should be ready to use in your project!
-
 
 ## Options
 ### RSS Elements
@@ -95,7 +94,6 @@ The following RSS elements can be defined in the options, as follows:
 
 
 
-
 ## Usage Examples
 ```js
 options: {
@@ -106,10 +104,8 @@ options: {
 }
 ```
 
-
 ## RSS Specifications
 _nothing yet_.
-
 
 ## Author
 
@@ -119,12 +115,12 @@ _nothing yet_.
 + [twitter.com/jonschlinkert](http://twitter.com/jonschlinkert)
 
 ## License
-Copyright (c) 2013 Jon Schlinkert, contributors.
+Copyright (c) 2014 Jon Schlinkert (https://github.com/jonschlinkert), contributors.  
 Released under the MIT license
 
 ***
 
-_This file was generated on Monday, October 14, 2013._
+_This file was generated on 2014-04-28._
 
 
 [grunt]: http://gruntjs.com/

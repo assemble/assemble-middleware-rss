@@ -103,9 +103,9 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-readme');
+  grunt.loadNpmTasks('grunt-verb');
   grunt.loadNpmTasks('assemble');
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'clean', 'assemble', 'readme']);
+  grunt.registerTask('default', ['jshint', 'clean', 'assemble', 'verb']);
 };
