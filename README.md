@@ -31,7 +31,6 @@ module.exports = function(grunt) {
 See the [options](#options) for further configuration.
 
 
-
 ## Options
 ### RSS Elements
 
@@ -105,7 +104,6 @@ Other Options:
 * `source`: Specifies a third-party source for the item 
 
 
-
 ## Usage Examples
 ```js
 options: {
@@ -116,10 +114,8 @@ options: {
 }
 ```
 
-
 ## RSS Specifications
 _nothing yet_.
-
 
 ## Authors
 
@@ -131,11 +127,8 @@ _nothing yet_.
 + [github.com/pburtchaell](http://github.com/pburtchaell)
 + [twitter.com/pburtchaell](http://twitter.com/pburtchaell)
 
-## License
-Copyright (c) 2014 Jon Schlinkert (https://github.com/jonschlinkert), contributors.
-Released under the MIT license
-
 ***
-
 [grunt]: http://gruntjs.com/
 [Getting Started]: https://github.com/gruntjs/grunt/blob/devel/docs/getting_started.md
+[package.json]: https://npmjs.org/doc/json.html
+
