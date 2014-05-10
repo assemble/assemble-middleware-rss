@@ -3,7 +3,12 @@
 > RSS generator plugin for Assemble, the static site generator for Yeoman, Grunt.js and Node.js.
 
 ## Contributing
-We welcome all kinds of contributions! The most basic way to show your support is to star the project, and if you'd like to get involed please see the [Contributing to assemble-contrib-rss](https://github.com/assemble/assemble-contrib-rss/blob/master/CONTRIBUTING.md) guide for information on contributing to this project.
+Find a bug? Have a feature request? Please [create an Issue](https://github.com/assemble/assemble-contrib-rss/issues).
+
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality,
+and run `docs` in the command line to build the docs with [Verb](https://github.com/assemble/verb).
+
+Pull requests are also encouraged, and if you find this project useful please consider "starring" it to show your support! Thanks!
 
 ## Quickstart
 From the same directory as your project's [Gruntfile][Getting Started] and [package.json][], install this plugin with the following command:
@@ -129,6 +134,6 @@ _nothing yet_.
 
 ***
 [grunt]: http://gruntjs.com/
-[Getting Started]: https://github.com/gruntjs/grunt/blob/devel/docs/getting_started.md
+[Getting Started]: http://gruntjs.com/getting-started
 [package.json]: https://npmjs.org/doc/json.html
 
