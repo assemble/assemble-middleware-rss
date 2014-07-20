@@ -17,10 +17,12 @@
     "node": ">= 0.8.0"
   },
   "dependencies": {
-    "frep": "~0.1.2",
-    "moment": "~2.2.1",
-    "js-prettify": "~1.4.0",
+    "async": "^0.9.0",
     "chalk": "~0.4.0",
+    "frep": "~0.1.2",
+    "js-prettify": "~1.4.0",
+    "lodash": "^2.4.1",
+    "moment": "~2.2.1",
     "rss": "~0.3.2"
   },
   "devDependencies": {

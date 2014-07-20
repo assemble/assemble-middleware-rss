@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 
     assemble: {
       options: {
-        //plugins: ['./rss.js'],
+        plugins: ['./rss.js'],
         layout: 'test/layout.hbs',
       },
       
