@@ -53,21 +53,21 @@ assemble: {
 }
 ```
 
-| Required | Type | | Default Value |     
-|:---------|:----:|-|--------------:|
-| `title` | string | Defines the title of the channel | pkg.name 
-| `description`| string | Describes the channel | pkg.description
-| `link`| string | Defines the hyperlink to the channel | --
+| Required     | Type   | Desciption                           | Default Value   |     
+|:-------------|:------:|--------------------------------------|----------------:|
+| `title`      | string | Defines the title of the channel     | pkg.name        |
+| `description`| string | Describes the channel                | pkg.description |
+| `link`       | string | Defines the hyperlink to the channel | pkg.homepage    |
 
-| Optional | Type | | Default Value |
-|:--------------|:----:|-|--------------:|
-| `categories` | array | Defines one or more categories for the feed |
-| `cloud` | string | Register processes to be notified immediately of updates of the feed |
-| `copyright`| string | Notifies about copyrighted material |
-| `docs`| string |Specifies an URL to the documentation of the format used in the feed |
+| Optional      | Type   | Description |
+|:--------------|:------:|-------------|
+| `categories`  | array  | Defines one or more categories for the feed |
+| `cloud`       | string | Register processes to be notified immediately of updates of the feed | |
+| `copyright`   | string | Notifies about copyrighted material |
+| `docs`        | string | Specifies an URL to the documentation of the format used in the feed |
 | `generator`| string | Specifies the program used to generate the feed |
-| `image` | string | Allows an image to be displayed when aggregators present a feed |
-| `language` | | Specifies the language the feed is written in | 'en'
+| `image`| string | Allows an image to be displayed when aggregators present a feed |
+| `language`| string | Specifies the language the feed is written in | 'en'
 | `lastBuildDate` | string | Defines the last-modified date of the content of the feed |
 | `managingEditor`| string| Defines the e-mail address to the editor of the content of the feed |
 | `pubDate` | string | Defines the last publication date for the content of the feed |
@@ -109,23 +109,26 @@ assemble: {
   }
 }
 ```
+Three values are required for the RSS feed to generate:
 
-| Required | Type |      
-|:--------------|:----:|
-| `title` | string | Defines the title of the item |
+| Value    | Type   | Description                                            |      
+|:---------|:------:|--------------------------------------------------------|
+| `title`  | string | Defines the title of the item                          |
 | `author` | string | Specifies the e-mail address to the author of the item |
-| `date` or `pubdate` | string | Defines the last-publication date for the item |
+| `date`   | string | Defines the last-publication date for the item         |
 
-| Optional | Type | |      
-|:--------------|:----:|-|
-| `description` | string | Describes the item |
-| `link` | string |Defines the hyperlink to the item |
-| `categories` | string | Defines one or more categories the item belongs to |
-| `comments` | string | Allows an item to link to comments about that item |
-| `guid` | string | Defines a unique identifier for the item |
-| `source` | string | Specifies a third-party source for the item | 
-| `lat` | number | The latitude coordinate of the item |
-| `long` | number |The longitude coordinate of the item |
+All other values are optional:
+
+| Value         | Type   | Desciption                                         |      
+|:--------------|:------:|----------------------------------------------------|
+| `description` | string | Describes the item                                 |
+| `link`        | string | Defines the hyperlink to the item                  |
+| `categories`  | string | Defines one or more categories the item belongs to |
+| `comments`    | string | Allows an item to link to comments about that item |
+| `guid`        | string | Defines a unique identifier for the item           |
+| `source`      | string | Specifies a third-party source for the item        | 
+| `lat`         | number | The latitude coordinate of the item                |
+| `long`        | number | The longitude coordinate of the item               |
 
 #### Excluding content
 Both `published: false` and `feed: false` will exclude an item from the feed. However, note that `published: false` will entirely prevent a page from being assembled.
