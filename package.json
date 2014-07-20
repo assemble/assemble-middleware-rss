@@ -12,7 +12,6 @@
     "url": "https://github.com/assemble/assemble-middleware-rss/issues"
   },
   "license": "MIT",
-  ],
   "main": "./rss.js",
   "engines": {
     "node": ">= 0.8.0"
@@ -26,11 +25,9 @@
   },
   "devDependencies": {
     "assemble": "~0.4.12",
-    "assemble-middleware-permalinks": "~0.3.6",
-    "chalk": "^0.4.0",
     "grunt": "~0.4.1",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-verb": "~0.1.7",
+    "grunt-verb": "latest",
     "js-prettify": "~1.4.0"
   },
   "peerDependencies": {
