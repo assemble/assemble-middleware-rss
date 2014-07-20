@@ -1,93 +1,78 @@
-/*
- * Assemble Plugin: Permalinks
- * https://github.com/assemble/permalinks
- *
- * Copyright (c) 2013 Jon Schlinkert, contributors
- * Licensed under the MIT license.
- */
-
 'use strict';
 
 module.exports = function(grunt) {
+  
+  var testsrc = {
+    expand: true, 
+    cwd: 'test/', 
+    src: ['*.hbs','!layout.hbs'], 
+    dest: 'test/dest'
+  };
 
-  var _ = grunt.util._;
-
-  // Project configuration.
   grunt.initConfig({
-
-    pkg: grunt.file.readJSON('package.json'),
 
     assemble: {
       options: {
-        plugins: ['./rss.js', 'permalinks'],
-        assets: 'test/actual/assets',
-        layout: 'test/fixtures/default.hbs',
+        //plugins: ['./rss.js'],
+        layout: 'test/layout.hbs',
       },
-      // Feeds should not be generated
-      no_opts: {
+      
+      /** 
+       * Test #1:
+       * 
+       * @expectation Feed does not generate.
+       */
+      'test-1': {
         options: {
-          feed: {}
+          feed: { } // Leave this object empty
         },
-        files: [
-          {expand: true, cwd: 'test/fixtures/pages', src: ['**/*.hbs'], dest: 'test/actual/no_opts', ext: '.html'}
-        ]
+        files: [ testsrc ]
       },
-      // Test multiple plugins together
-      multiple_plugins: {
+      
+      /** 
+       * Test #2:
+       *
+       * @desc Test multiple plugins together.
+       * @expecation Generated feed successfully.
+       */
+      'test-2': {
         options: {
           flatten: true,
-          permalinks: {preset: 'pretty'},
-          // Test RSS config using all custom options
+          permalinks: { 
+            preset: 'pretty'
+          },
           feed: {
             logging: true,
             format: true,
-            author: 'Jon Schlinkert',
-            dest: 'rss.xml',
-            siteurl: 'http:/assemble.io',
-            items: {}
-          },
+            author: 'Jon Doe',
+            dest: 'feed.xml',
+            siteurl: 'http://example.com',
+            items: { }
+          }
         },
-        files: [
-          {expand: true, cwd: 'test/fixtures/pages', src: ['**/*.hbs'], dest: 'test/actual/multiple_plugins', ext: '.html'}
-        ]
-      },     
-      feeds: {
-        options: {
-          flatten: true,
-          permalinks: {preset: 'pretty'},
-
-          // Test RSS config using all custom options
-          feed: {
-            logging: true,
-            format: true,
-            author: 'Jon Schlinkert',
-            dest: 'rss.xml',
-            siteurl: 'http:/assemble.io',
-            items: {}
-          },
-        },
-        files: [
-          {expand: true, cwd: 'test/fixtures/pages/feeds', src: ['*.hbs'], dest: 'test/actual/pages/feeds', ext: '.html'}
-        ]
+        files: [ testsrc ]
+      },
+    
+      /** 
+       * Test #3:
+       *
+       * @desc Test assemble build without plugins.
+       * @expecation Generated pages successfully.
+       */
+      'test-3': {
+        files: [ testsrc ] 
       }
+      
     },
-
-    // Before generating new files, remove any files from previous build.
-    clean: {
-      actual: ['test/actual/**'],
-    },
-
-    // Unit tests.
-    nodeunit: {
-      tests: ['test/*_test.js'],
-    }
+    
+    clean: { actual: ['test/dest'] }
+    
   });
 
-  // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-verb');
   grunt.loadNpmTasks('assemble');
 
-  // By default, lint and run all tests.
   grunt.registerTask('default', ['clean', 'assemble', 'verb']);
+  
 };
