@@ -1,11 +1,3 @@
 node_modules
 npm-debug.log
-
-tmp
-temp
-TODO.md
-
-*.sublime-*
 .DS_Store
-
-test/actual
