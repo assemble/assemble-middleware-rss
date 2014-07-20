@@ -1,4 +1,4 @@
-# assemble-contrib-rss [![NPM version](https://badge.fury.io/js/assemble-contrib-rss.png)](http://badge.fury.io/js/assemble-contrib-rss)  [![Build Status](https://travis-ci.org/assemble/assemble-contrib-rss.png)](https://travis-ci.org/assemble/assemble-contrib-rss)
+# assemble-contrib-rss [![NPM version](https://badge.fury.io/js/assemble-contrib-rss.png)](http://badge.fury.io/js/assemble-contrib-rss)  [![Build Status](https://travis-ci.org/assemble/assemble-contrib-rss.png)](https://travis-ci.org/assemble/assemble-middleware-rss)
 
 > RSS generator plugin for Assemble, the static site generator for Yeoman, Grunt.js and Node.js.
 

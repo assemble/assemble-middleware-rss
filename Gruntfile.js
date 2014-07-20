@@ -17,23 +17,6 @@ module.exports = function(grunt) {
 
     pkg: grunt.file.readJSON('package.json'),
 
-    jshint: {
-      options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true,
-        node: true
-      },
-      all: ['Gruntfile.js', 'tasks/*.js', '<%= nodeunit.tests %>']
-    },
-
     assemble: {
       options: {
         plugins: ['./rss.js', 'permalinks'],
@@ -102,10 +85,9 @@ module.exports = function(grunt) {
 
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-verb');
   grunt.loadNpmTasks('assemble');
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'clean', 'assemble', 'verb']);
+  grunt.registerTask('default', ['clean', 'assemble', 'verb']);
 };
