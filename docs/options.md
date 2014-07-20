@@ -1,70 +1,99 @@
-## RSS Elements
+### Plugin Options
+| Option | Type | | Default Value |  
+|:-------|:----:|-|--------------|
+| `debug` | boolean | Enable developer mode | `false`
+| `prettify`| boolean | Prettify output XML file using js-prettify | `false`
+| `dest`| string | Destination of the generated RSS feed |`'feed.xml'`
 
-The following RSS elements can be defined in the options, as follows: 
+### RSS Feed Data
+> Data for the RSS `<channel>`element.
+
+This data is defined under the plugin configuration.
+
 ```js
 assemble: {
   options: {
-    rss: {
-      category: ['foo'],
-      title: 'Assemble',
+    feed: {
+      title: 'foo',
+      description: 'bar'
     }
   }
 }
 ```
 
-These options will be used within the RSS `<channel>`element.
+| Required | Type | | Default Value |     
+|:---------|:----:|-|--------------:|
+| `title` | string | Defines the title of the channel | pkg.name 
+| `description`| string | Describes the channel | pkg.description
+| `link`| string | Defines the hyperlink to the channel | --
 
-Required Options:
-* `title`: Defines the title of the channel 
-* `description`: Describes the channel 
-* `link`: Defines the hyperlink to the channel 
+| Optional | Type | | Default Value |
+|:--------------|:----:|-|--------------:|
+| `categories` | array | Defines one or more categories for the feed |
+| `cloud` | string | Register processes to be notified immediately of updates of the feed |
+| `copyright`| string | Notifies about copyrighted material |
+| `docs`| string |Specifies an URL to the documentation of the format used in the feed |
+| `generator`| string | Specifies the program used to generate the feed |
+| `image` | string | Allows an image to be displayed when aggregators present a feed |
+| `language` | | Specifies the language the feed is written in | 'en'
+| `lastBuildDate` | string | Defines the last-modified date of the content of the feed |
+| `managingEditor`| string| Defines the e-mail address to the editor of the content of the feed |
+| `pubDate` | string | Defines the last publication date for the content of the feed |
+| `rating` | string | The PICS rating of the feed |
+| `skipDays` | string | Specifies the days where aggregators should skip updating the feed |
+| `skipHours` | string | Specifies the hours where aggregators should skip updating the feed | 
+| `textInput` | string | pecifies a text input field that should be displayed with the feed |
+| `ttl` | string | Specifies the number of minutes the feed can stay cached before refreshing it from the source | '60' |
+| `webmaster` | string | Defines the email address to the webmaster of the feed |
+| `geoRSS` | boolean | Enable or disable GeoRSS | false
 
-Other Options:
-* `category`: Defines one or more categories for the feed 
-* `cloud`: Register processes to be notified immediately of updates of the feed 
-* `copyright`: Notifies about copyrighted material 
-* `docs`: Specifies an URL to the documentation of the format used in the feed 
-* `generator`: Specifies the program used to generate the feed 
-* `image`: Allows an image to be displayed when aggregators present a feed 
-* `language`: Specifies the language the feed is written in 
-* `lastBuildDate`: Defines the last-modified date of the content of the feed 
-* `managingEditor`: Defines the e-mail address to the editor of the content of the feed 
-* `pubDate`: Defines the last publication date for the content of the feed 
-* `rating`: The PICS rating of the feed 
-* `skipDays`: Specifies the days where aggregators should skip updating the feed 
-* `skipHours`: Specifies the hours where aggregators should skip updating the feed 
-* `textInput`: pecifies a text input field that should be displayed with the feed 
-* `ttl`: Specifies the number of minutes the feed can stay cached before refreshing it from the source 
-* `webMaster`: Defines the e-mail address to the webmaster of the feed 
+### RSS Item Data
+> Data for the RSS `<item>`element(s).
 
+The data for feed items is generally grabbed from the YAML Front Matter.
+```
+title: Assemble
+desciption: Static site generator for Node.js
+link: http://assemble.io
+```
+or 
+```
+feed: 
+ title: ...
+ description: ...
+```
 
-**RSS `item` Element**
-In addition, you can define item defaults, but you can also define these in the YAML front matter of each page.
-
+You can also set default item data values within the plugin configuration.
 ```js
 assemble: {
   options: {
-    rss: {
+    feed: {
+      title: 'foo',
+      description: 'bar'
       items: {
-        title: 'Assemble',
-        description: 'Static site generator for Node.js',
-        link: 'http://assemble.io'
+        title: 'baz'
       }
     }
   }
 }
 ```
 
-Required Options: 
-* `title`: Defines the title of the item 
-* `description`: Describes the item 
-* `link`: Defines the hyperlink to the item 
+| Required | Type |      
+|:--------------|:----:|
+| `title` | string | Defines the title of the item |
+| `author` | string | Specifies the e-mail address to the author of the item |
+| `date` or `pubdate` | string | Defines the last-publication date for the item |
 
-Other Options:
-* `author`: Specifies the e-mail address to the author of the item 
-* `category`: Defines one or more categories the item belongs to 
-* `comments`: Allows an item to link to comments about that item 
-* `enclosure`: Allows a media file to be included with the item 
-* `guid`: Defines a unique identifier for the item 
-* `pubDate`: Defines the last-publication date for the item 
-* `source`: Specifies a third-party source for the item 
+| Optional | Type | |      
+|:--------------|:----:|-|
+| `description` | string | Describes the item |
+| `link` | string |Defines the hyperlink to the item |
+| `categories` | string | Defines one or more categories the item belongs to |
+| `comments` | string | Allows an item to link to comments about that item |
+| `guid` | string | Defines a unique identifier for the item |
+| `source` | string | Specifies a third-party source for the item | 
+| `lat` | number | The latitude coordinate of the item |
+| `long` | number |The longitude coordinate of the item |
+
+### Excluding content
+Both `published: false` and `feed: false` will exclude an item from the feed. However, note that `published: false` will entirely prevent a page from being assembled.

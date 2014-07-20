@@ -1,8 +1,13 @@
+Generate feed using only required options.
 ```js
 options: {
-  rss: {},
-  files: {
-    './blog/': ['./templates/blog/*.hbs']
-  }
+  feed: {
+    title: 'My Blog',
+    description: 'A collection of writing'
+    link: '<%=pkg.url%>'
+  },
+},
+files: {
+  './blog/': ['./templates/blog/*.hbs']
 }
 ```
