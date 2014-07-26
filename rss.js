@@ -39,6 +39,37 @@ module.exports = function(config, callback) {
       } else return;
     };
     
+    /** 
+     * If package.json has an author string instead of an author object, 
+     * split the string so the data can be used in templates.
+     * 
+     * For example, we need to turn: 
+     * `"author": "Name <email> (url)"` into
+     * `"author": { "name": "name", "email": "email", "url": "url" }`
+     */
+    if (typeof pkg.author === 'string') {
+
+      // Split the string into an array.
+      var array = pkg.author.split(/<|>/);
+
+      // Clean up the name and URL strings, but only if they exist.
+      if (array[0]) {
+        array[0] = array[0].slice(0, -1);
+      } else if (array[2]) {
+        array[2] = array[2].substr(2).slice(0, -1); 
+      };
+
+      // Create the new author object
+      var author = {
+        name: array[0],
+        email: array[1],
+        url: array[2]
+      };
+
+      // Update the pkg (package.json) object
+      pkg.author = author; 
+    };
+    
     /**
      * @object defaults
      * @desc Set default values for the RSS feed data.
