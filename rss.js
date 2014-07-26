@@ -31,6 +31,11 @@ module.exports = function (config, callback) {
      */
     var fail = function (property) {
       if (config.logging) {
+        /**
+         * @function message
+         * @param 'cb' - A callback to run after the message is logged.
+         * @desc Log a message to the console and kill Assemble.
+         */
         var message = function (cb) {
           console.log('RSS property ' + 
                       chalk.yellow(property) + 
@@ -38,6 +43,7 @@ module.exports = function (config, callback) {
                       chalk.red('ERROR')); 
           cb();
         };
+        
         // Show the message and kill Grunt/gulp.
         return message(function () {
           process.kill();
