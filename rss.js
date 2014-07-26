@@ -9,7 +9,7 @@ var rss = require('rss');
 var _ = require('lodash');
 var utils = require('./lib/utils');
 
-module.exports = function(config, callback) {
+module.exports = function (config, callback) {
 
   'use strict';
 
