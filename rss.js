@@ -31,10 +31,14 @@ module.exports = function(config, callback) {
      */
     var fail = function (property) {
       if (config.logging) {
-        return grunt.fail.fatal(
-          ('assemble-middleware-rss ' + property).yellow + 
-          ' is not defined in gruntfile.js.'.bold
-        );
+        var message = function (cb) {
+          console.log('rss: ' + property + ' is not defined in gruntfile.js.'); 
+          cb();
+        };
+        // Show the message and kill Grunt/gulp.
+        return message(function () {
+          process.kill();
+        });
       } else return;
     };
     
