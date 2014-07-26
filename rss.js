@@ -12,10 +12,9 @@ var utils = require('./lib/utils');
 module.exports = function(config, callback) {
 
   'use strict';
+
+  var pkg = require(path.join(process.cwd(), 'package.json'));
   
-  var grunt = config.grunt;
-  var pkg = grunt.file.readJSON(path.join(process.cwd(), 'package.json'));
-    
   var options = config.context;
   var config = options.rss || {};
   
