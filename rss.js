@@ -1,4 +1,5 @@
 var path = require('path');
+var path = require('path');
 var url = require('url');
 var fs = require('fs');
 var chalk = require('chalk');
@@ -11,17 +12,18 @@ var utils = require('./lib/utils');
 module.exports = function(config, callback) {
 
   'use strict';
-
-  var options = config.context;
+  
   var grunt = config.grunt;
   var pkg = grunt.file.readJSON(path.join(process.cwd(), 'package.json'));
-  var feed = options.feed || {};
+    
+  var options = config.context;
+  var rss = options.rss || {};
   
   var pages = options.pages; // Define an array all of page data.
   var page = options.page; // Define a single page's data object.
-
+  
   // Skip over the plugin if it isn't defined in the options.
-  if (!_.isUndefined(feed)) {
+  if (!_.isUndefined(rss)) {
 
     /**
      * @function fail
@@ -29,7 +31,7 @@ module.exports = function(config, callback) {
      * @desc Stops Grunt with a fatal failure.
      */
     var fail = function (property) {
-      if (feed.logging) {
+      if (rss.logging) {
         return grunt.fail.fatal(
           ('assemble-middleware-rss ' + property).yellow + 
           ' is not defined in gruntfile.js.'.bold
@@ -50,13 +52,13 @@ module.exports = function(config, callback) {
       lastBuildDate: moment().format("dddd, MMMM Do YYYY"),
       pubdate: 0, // @TODO use moment.js to to return formated string
       siteurl: pkg.homepage,
-      feedurl: url.resolve(pkg.homepage, feed.dest || 'feed.xml'),
+      feedurl: url.resolve(pkg.homepage, rss.dest || 'feed.xml'),
       language: 'en',
       ttl: '60',
       geoRSS: false,
     };
        
-    moment.lang(feed.language || defaults.language);  // Moment.js default language
+    moment.lang(rss.language || defaults.language);  // Moment.js default language
     
     /**
      * @function feed
@@ -68,24 +70,25 @@ module.exports = function(config, callback) {
      *       default will not solve that issue, the `fail()` function will
      *       be called, thus stoping the task.
      */
+    var config = rss;
     var feed = new rss({
-      generator: feed.generator || defaults.generator,
+      generator: config.generator || defaults.generator,
       lastBuildDate: defaults.lastBuildDate,
-      title: feed.title || defaults.title || fail('title'),
-      description: feed.description || defaults.description,
-      pubdate: feed.pubdate || defaults.pubdate,
-      site_url: feed.siteurl || defaults.siteurl,
-      feed_url: feed.feedurl || defaults.feedurl,
-      image_url: feed.imageurl,
-      author: feed.author || defaults.author || fail('author'),
-      managingEditor: feed.managingEditor,
-      webMaster: feed.webMaster,
-      categories: feed.categories,
-      docs: feed.docs,
-      copyright: feed.copyright || defaults.copyright,
-      language: feed.language || defaults.language,
-      ttl: feed.ttl || defaults.ttl,
-      geoRSS: feed.geoRSS || defaults.geoRSS
+      title: config.title || defaults.title || fail('title'),
+      description: config.description || defaults.description,
+      pubdate: config.pubdate || defaults.pubdate,
+      site_url: config.siteurl || defaults.siteurl,
+      feed_url: config.feedurl || defaults.feedurl,
+      image_url: config.imageurl,
+      author: config.author || defaults.author || fail('author'),
+      managingEditor: config.managingEditor,
+      webMaster: config.webMaster,
+      categories: config.categories,
+      docs: config.docs,
+      copyright: config.copyright || defaults.copyright,
+      language: config.language || defaults.language,
+      ttl: config.ttl || defaults.ttl,
+      geoRSS: config.geoRSS || defaults.geoRSS
     });
     
     /**
@@ -122,9 +125,11 @@ module.exports = function(config, callback) {
     }, function (err) {
       callback();
     });
+    
+    console.log(feed);
         
     var output = feed.xml(); // cache the XML output to a variable
-    if (options.feed.format === true) output = utils.format(output); // format XML if true
+    if (rss.format === true) output = utils.format(output); // format XML if true
   
     /** 
      * I could use `grunt.file.write()` but I am trying to future 
