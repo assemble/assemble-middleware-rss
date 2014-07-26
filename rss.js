@@ -17,13 +17,13 @@ module.exports = function(config, callback) {
   var pkg = grunt.file.readJSON(path.join(process.cwd(), 'package.json'));
     
   var options = config.context;
-  var rss = options.rss || {};
+  var config = options.rss || {};
   
   var pages = options.pages; // Define an array all of page data.
   var page = options.page; // Define a single page's data object.
   
   // Skip over the plugin if it isn't defined in the options.
-  if (!_.isUndefined(rss)) {
+  if (!_.isUndefined(config)) {
 
     /**
      * @function fail
@@ -31,7 +31,7 @@ module.exports = function(config, callback) {
      * @desc Stops Grunt with a fatal failure.
      */
     var fail = function (property) {
-      if (rss.logging) {
+      if (config.logging) {
         return grunt.fail.fatal(
           ('assemble-middleware-rss ' + property).yellow + 
           ' is not defined in gruntfile.js.'.bold
@@ -52,13 +52,13 @@ module.exports = function(config, callback) {
       lastBuildDate: moment().format("dddd, MMMM Do YYYY"),
       pubdate: moment().format(),
       siteurl: pkg.homepage,
-      feedurl: url.resolve(pkg.homepage, rss.dest || 'feed.xml'),
+      feedurl: url.resolve(pkg.homepage, config.dest || 'feed.xml'),
       language: 'en',
       ttl: '60',
       geoRSS: false,
     };
        
-    moment.lang(rss.language || defaults.language);  // Moment.js default language
+    moment.lang(config.language || defaults.language);  // Moment.js default language
     
     /**
      * @function feed
@@ -70,7 +70,6 @@ module.exports = function(config, callback) {
      *       default will not solve that issue, the `fail()` function will
      *       be called, thus stoping the task.
      */
-    var config = rss;
     var feed = new rss({
       generator: config.generator || defaults.generator,
       lastBuildDate: defaults.lastBuildDate,
@@ -125,11 +124,9 @@ module.exports = function(config, callback) {
     }, function (err) {
       callback();
     });
-    
-    console.log(feed);
         
     var output = feed.xml(); // cache the XML output to a variable
-    if (rss.format === true) output = utils.format(output); // format XML if true
+    if (config.format === true) output = utils.format(output); // format XML if true
   
     /** 
      * I could use `grunt.file.write()` but I am trying to future 
