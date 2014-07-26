@@ -32,7 +32,10 @@ module.exports = function (config, callback) {
     var fail = function (property) {
       if (config.logging) {
         var message = function (cb) {
-          console.log('rss: ' + property + ' is not defined in gruntfile.js.'); 
+          console.log('RSS property ' + 
+                      chalk.yellow(property) + 
+                      ' is not defined ' + 
+                      chalk.red('ERROR')); 
           cb();
         };
         // Show the message and kill Grunt/gulp.
