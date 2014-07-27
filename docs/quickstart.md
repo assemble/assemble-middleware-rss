@@ -4,21 +4,18 @@ From the same directory as your project's [gruntfile][Getting Started] and [pack
 npm install {%= name %} --save-dev
 ```
 
-Next add `assemble-middleware-rss`, the name of this module, to the `plugins` option in the Assemble task:
+Next add `{%= name %}`, the name of this module, to the `plugins` option in the Assemble task:
+
 ```js
-module.exports = function(grunt) {
-  grunt.initConfig({
-    assemble: {
-      options: {
-        plugins: ['assemble-middleware-rss'],
-        rss: {
-          // RSS options
-        }
-      },
-      ...
-    }
-  });
-};
+options: {
+  plugins: ['assemble-middleware-rss'],
+  rss: {
+    title: 'RSS Feed Title',
+    description: 'RSS feed description.'
+  }
+}
 ```
+
+*Note*: Author is also required, but it is pulled from `package.json` by default. As long as you have a `package.json` file in the root directory, you don't need to include author in the options.
 
 See the [options](#options) for further configuration.
