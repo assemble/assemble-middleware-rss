@@ -161,7 +161,10 @@ module.exports = function (config, callback) {
         long: page.long
       };
       
-      addItem(defaults.item);
+      // If "rss: false" does not exist in the YFM, then add the item.
+      if (page.rss != false) {
+        addItem(defaults.item);
+      };
       
       next();
     }, function (err) {
