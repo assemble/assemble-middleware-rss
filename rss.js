@@ -1,5 +1,4 @@
 var path = require('path');
-var path = require('path');
 var url = require('url');
 var fs = require('fs');
 var chalk = require('chalk');
