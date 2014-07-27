@@ -117,7 +117,7 @@ module.exports = function (config, callback) {
       generator: config.generator || defaults.generator,
       lastBuildDate: defaults.lastBuildDate,
       title: config.title || defaults.title || fail('title'),
-      description: config.description || defaults.description,
+      description: config.description || defaults.description || fail('description'),
       pubdate: config.pubdate || defaults.pubdate,
       site_url: config.siteurl || defaults.siteurl,
       feed_url: config.feedurl || defaults.feedurl,
@@ -153,7 +153,7 @@ module.exports = function (config, callback) {
       defaults.item = {
         title: page.title || fail('title'),
         author: defaults.author || page.author || fail('author'),
-        description: page.description,
+        description: page.description || fail('description'),
         url: page.url || url.resolve(pkg.homepage, file.dest), 
         guid: page.guid || page.url, 
         categories: page.categories,
