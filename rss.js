@@ -153,7 +153,7 @@ module.exports = function (config, callback) {
         title: page.title || fail('title'),
         author: defaults.author || page.author || fail('author'),
         description: page.description || fail('description'),
-        url: page.url || url.resolve(pkg.homepage, file.dest), 
+        url: url.resolve(pkg.homepage, file.relativeLink), 
         guid: page.guid || page.url, 
         categories: page.categories,
         lat: page.lat, 
