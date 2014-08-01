@@ -1,7 +1,7 @@
 {
   "name": "assemble-middleware-rss",
   "description": "RSS generator plugin for Assemble.",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "homepage": "https://github.com/assemble/assemble-middleware-rss",
   "author": "Patrick Burtchael <patrick@pburtchaell.com> (https://pburtchaell.com/)",
   "repository": {
