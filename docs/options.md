@@ -1,9 +1,8 @@
 ### Plugin Options
 | Option    | Type    | Description                              | Default Value |  
 |:----------|:-------:|------------------------------------------|---------------|
-| `debug`   | boolean | Enable developer mode                    | `false`       |
 | `format`  | boolean | Format output XML file using js-prettify | `false`       |
-| `dest`    | string  | Destination of the generated RSS feed    |`'feed.xml'`   |
+| `dest`    | string  | Destination and filename of the generated RSS feed    |`'feed.xml'`   |
 
 ### RSS Feed Data
 > Data for the RSS `<channel>` element.
