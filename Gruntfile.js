@@ -24,7 +24,7 @@ module.exports = function(grunt) {
        */
       'test-1': {
         options: {
-          feed: { } // Leave this object empty
+          rss: { } // Leave this object empty
         },
         files: [ testsrc ]
       },
@@ -41,13 +41,12 @@ module.exports = function(grunt) {
           permalinks: { 
             preset: 'pretty'
           },
-          feed: {
+          rss: {
             logging: true,
             format: true,
             author: 'Jon Doe',
             dest: 'feed.xml',
-            siteurl: 'http://example.com',
-            items: { }
+            siteurl: 'http://example.com'
           }
         },
         files: [ testsrc ]
