@@ -178,8 +178,8 @@ module.exports = function (config, callback) {
      * proof this middleware for versions of assemble that don't depend on 
      * grunt.
      */
-    fs.writeFileSync(path.join(__dirname,'feed.xml'), output);
-    //console.log('RSS feed generated in ' /*+ dest.replace(/\\/g, '/')*/ + ' OK'.green);    
-        
+    var dest = config.dest || path.join(page.dirname,'feed.xml');        
+    fs.writeFileSync(dest, output);
+    
   };
 };
