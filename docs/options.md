@@ -13,7 +13,7 @@ This data is defined under the plugin configuration.
 ```js
 assemble: {
   options: {
-    feed: {
+    rss: {
       title: 'foo',
       description: 'bar'
     }
