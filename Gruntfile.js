@@ -23,9 +23,6 @@ module.exports = function(grunt) {
        * @expectation Feed does not generate.
        */
       'test-1': {
-        options: {
-          rss: { } // Leave this object empty
-        },
         files: [ testsrc ]
       },
       
